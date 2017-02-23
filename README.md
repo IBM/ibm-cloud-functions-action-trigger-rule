@@ -1,6 +1,6 @@
-# dw-openwhisk-demo-1
+# OpenWhisk 101 - Your first Action, Trigger, and Rule
 
-Simple demo showing OpenWhisk actions, triggers, and rules.
+Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/).
 
 ![High level diagram](demo-1.png)
 
