@@ -1,4 +1,4 @@
-# OpenWhisk 101 - Your first Action, Trigger, and Rule
+# OpenWhisk building block - Your first Action, Trigger, and Rule
 
 Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/).
 
