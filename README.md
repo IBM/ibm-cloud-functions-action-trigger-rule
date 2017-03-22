@@ -1,6 +1,6 @@
 # OpenWhisk building block - Your first Action, Trigger, and Rule
 
-Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/). [You'll need a Bluemix account and the latest OpenWhisk command line tool.](/docs/OpenWhisk.md)
+Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/). First, [You'll need a Bluemix account and the latest OpenWhisk command line tool.](/docs/OPENWHISK.md)
 
 ![High level diagram](demo-1.png)
 
