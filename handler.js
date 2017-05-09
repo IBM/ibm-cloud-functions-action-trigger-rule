@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- function main(params) {
-    var date = new Date();
-    var now = (date.getHours() + ":" +
-               date.getMinutes() + ":" +
-               date.getSeconds());
-    console.log("Invoked at: " + now);
-    return { message: "Invoked at: " + now };
+function main(params) {
+  var date = new Date();
+  var now = (date.getHours() + ":" +
+    date.getMinutes() + ":" +
+    date.getSeconds());
+  console.log("Invoked at: " + now);
+  return {
+    message: "Invoked at: " + now
+  };
 }

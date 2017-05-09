@@ -14,32 +14,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Capture the namespace where actions will be created
-WSK='wsk' # Set if not in your $PATH
-CURRENT_NAMESPACE=`$WSK property get --namespace | sed -n -e 's/^whisk namespace//p' | tr -d '\t '`
-echo "Current namespace is $CURRENT_NAMESPACE."
-
 function install() {
-  $WSK action create handler handler.js
+  wsk action create handler handler.js
 
-  $WSK trigger create every-20-seconds \
+  wsk trigger create every-20-seconds \
     --feed  /whisk.system/alarms/alarm \
     --param cron '*/20 * * * * *' \
-    --param maxTriggers 6
+    --param maxTriggers 15
 
-  $WSK rule create \
+  wsk rule create \
     invoke-periodically \
     every-20-seconds \
     handler
 }
 
 function uninstall() {
-  $WSK rule disable invoke-periodically
-  $WSK rule delete invoke-periodically
-  $WSK trigger delete every-20-seconds
-  $WSK action delete handler
+  wsk rule disable invoke-periodically
+  wsk rule delete invoke-periodically
+  wsk trigger delete every-20-seconds
+  wsk action delete handler
 }
-
 
 case "$1" in
 "--install" )
