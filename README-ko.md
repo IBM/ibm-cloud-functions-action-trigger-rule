@@ -8,7 +8,7 @@ OpenWhisk 액션, 트리거 및 룰에 대한 단순 데모로서, [Build a clou
 
 ## 액션: `handler.js`
 
-OpenWhisk 에서 _action_ 으로 불리는 이 JavaScript 함수는 `params`를 매개변수로 받고 OpenWhisk 로그나 IBM Bluemix 모니터링 콘솔에서 받을 수 있는 정보를 출력합니다. 또한 현재 날짜를 JSON 객체로 리턴합니다.
+OpenWhisk 에서 _액션_ 으로 불리는 이 JavaScript 함수는 `params`를 매개변수로 받고 OpenWhisk 로그나 IBM Bluemix 모니터링 콘솔에서 받을 수 있는 정보를 출력합니다. 또한 현재 날짜를 JSON 객체로 리턴합니다.
 
 먼저, 터미널 윈도를 열어 OpenWhisk 활성화 로그에 대한 폴링을 시작합니다. 액션에서 `console.log` 구문은 여기에 로그를 남기고 다음 명령으로 스티리밍 할 수 있습니다:
 
@@ -22,7 +22,7 @@ wsk activation poll
 wsk action create handler handler.js
 ```
 
-이제 이를 수동으로 호출하십시오. 그러면 JSON 메시지를 현재 윈도에 나타내고 다른 윈도에 활성화가 로깅됩니다.
+이제 이를 수동으로 호출하십시오. 그러면 JSON 메시지를 현재 윈도에 나타내고 다른 윈도에 활성화 로그가 남게됩니다.
 
 ```bash
 wsk action invoke --blocking handler
@@ -30,7 +30,7 @@ wsk action invoke --blocking handler
 
 ## 트리거: `every-20-seconds`
 
-이 트리거는 내장 알람 패키지를 사용하며, 생성될 때 `cron` 매개변수를 통해 cron 구문으로 지정되어 매 20초 마다 이벤트를 발생합니다. `maxTriggers` 매개 변수는 기본 값인 10,000회 호출보다 5분동안 최대 15회까지 발생하도록 제한합니다.
+이 트리거는 내장 알람 패키지를 사용하며, 트리거 생성 시 `cron` 매개변수를 통해 넘겨받은 cron 문법으로 설정되어 매 20초 마다 이벤트를 발생 시킵니다. `maxTriggers` 매개 변수는 기본 값인 10,000회 호출 대신 5분(15회)동안 발생하도록 제한합니다.
 
 다음 명령으로 트리거를 생성합니다:
 
@@ -71,7 +71,7 @@ OpenWhisk 개발자는 개발하는 애플리케이션에 대해 반복되는 �
 > **참고**: `deploy.sh`은 향후 [`wskdeploy`](https://github.com/openwhisk/openwhisk-wskdeploy)로 교체될 예정입니다. `wskdeploy`는 선언된 트리거, 액션 및 규칙을 OpenWhisk에 배포하기 위해 manifest를 사용합니다.
 
 ## 문제 해결
-가장 먼제 OpenWhisk 활성화 로그에서 오류를 확인 하십시오. 명령창에서 `wsk activation poll`을 이용하여 로그 메시지를 확인하거나 [Bluemix의 모니터링 콘솔](https://console.ng.bluemix.net/openwhisk/dashboard)에서 시각적으로 상세정보를 확인해 보십시오.
+가장 먼저 OpenWhisk 활성화 로그에서 오류를 확인 하십시오. 명령창에서 `wsk activation poll`을 이용하여 로그 메시지를 확인하거나 [Bluemix의 모니터링 콘솔](https://console.ng.bluemix.net/openwhisk/dashboard)에서 시각적으로 상세정보를 확인해 보십시오.
 
 오류가 즉각적으로 분명하지 않다면, [최신 버젼의 `wsk` CLI](https://console.ng.bluemix.net/openwhisk/learn/cli)가 설치되어 있는지 확인하십시오. 만약 이전 것이라면 다운로드하고 업데이트 하십시오.
 ```bash
