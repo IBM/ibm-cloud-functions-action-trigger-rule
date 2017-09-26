@@ -1,5 +1,7 @@
 # OpenWhisk - Your first Action, Trigger, and Rule
 
+*Read this in other languages: [한국어](README-ko.md).*
+
 Simple demo showing OpenWhisk actions, triggers, and rules. Created for the [Build a cloud native app with Apache OpenWhisk webinar](https://developer.ibm.com/tv/build-a-cloud-native-app-with-apache-openwhisk/). First, [you'll need a Bluemix account and the latest OpenWhisk command line tool.](/docs/OPENWHISK.md)
 
 ![High level diagram](demo-1.png)
