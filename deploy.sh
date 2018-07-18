@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Copyright 2016 IBM Corp. All Rights Reserved.
+# Copyright 2016-2018 IBM Corp. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the “License”);
 # you may not use this file except in compliance with the License.
@@ -19,24 +19,24 @@ function usage() {
 }
 
 function install() {
-  wsk action create handler handler.js
+  bx wsk action create handler handler.js
 
-  wsk trigger create every-20-seconds \
+  bx wsk trigger create every-20-seconds \
     --feed  /whisk.system/alarms/alarm \
     --param cron '*/20 * * * * *' \
     --param maxTriggers 15
 
-  wsk rule create \
+  bx wsk rule create \
     invoke-periodically \
     every-20-seconds \
     handler
 }
 
 function uninstall() {
-  wsk rule disable invoke-periodically
-  wsk rule delete invoke-periodically
-  wsk trigger delete every-20-seconds
-  wsk action delete handler
+  bx wsk rule disable invoke-periodically
+  bx wsk rule delete invoke-periodically
+  bx wsk trigger delete every-20-seconds
+  bx wsk action delete handler
 }
 
 case "$1" in

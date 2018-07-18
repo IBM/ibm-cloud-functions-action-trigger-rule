@@ -13,19 +13,19 @@ This simple JavaScript function (called an _action_ in OpenWhisk) accepts a `par
 First, open a terminal window to start polling the activation log. The `console.log` statements in the action will be logged here, which you can stream with the following command:
 
 ```bash
-wsk activation poll
+bx wsk activation poll
 ```
 
 In another terminal window, upload the action file as a Cloud Function using the following command:
 
 ```bash
-wsk action create handler handler.js
+bx wsk action create handler handler.js
 ```
 
 Then invoke it manually. This will echo the resulting JSON message to the current window and log the activation in the other window.
 
 ```bash
-wsk action invoke --blocking handler
+bx wsk action invoke --blocking handler
 ```
 
 ## Trigger: `every-20-seconds`
@@ -35,10 +35,10 @@ This trigger uses the built-in alarm package feed to fire events every 20 second
 Create it with the following command:
 
 ```bash
-wsk trigger create every-20-seconds \
-    --feed  /whisk.system/alarms/alarm \
-    --param cron '*/20 * * * * *' \
-    --param maxTriggers 15
+bx wsk trigger create every-20-seconds \
+  --feed  /whisk.system/alarms/alarm \
+  --param cron '*/20 * * * * *' \
+  --param maxTriggers 15
 ```
 
 ## Rule: `invoke-periodically`
@@ -48,10 +48,10 @@ This rule shows how the `every-20-seconds` trigger can be declaratively mapped t
 Create the rule with the following command:
 
 ```bash
-wsk rule create \
-    invoke-periodically \
-    every-20-seconds \
-    handler
+bx wsk rule create \
+  invoke-periodically \
+  every-20-seconds \
+  handler
 ```
 
 At this point you can check the activation log that you are tailing in the other window to confirm that the action is invoked by the trigger.
@@ -71,11 +71,11 @@ The script can be used to set up, tear down, and see the current configuration:
 > **Note**: `deploy.sh` will be replaced with [`wskdeploy`](https://github.com/openwhisk/openwhisk-wskdeploy) in the future. `wskdeploy` uses a manifest to deploy declared triggers, actions, and rules to OpenWhisk.
 
 ## Troubleshooting
-Check for errors first in the activation log. Tail the log on the command line with `wsk activation poll` or drill into details visually with the [Cloud Functions monitoring console](https://console.ng.bluemix.net/openwhisk/dashboard).
+Check for errors first in the activation log. Tail the log on the command line with `bx wsk activation poll` or drill into details visually with the [Cloud Functions monitoring console](https://console.ng.bluemix.net/openwhisk/dashboard).
 
 If the error is not immediately obvious, make sure you have the [latest version of the `wsk` CLI installed](https://console.ng.bluemix.net/openwhisk/learn/cli). If it's older than a few weeks, download an update.
 ```bash
-wsk property get --cliversion
+bx wsk property get --cliversion
 ```
 
 ## License
