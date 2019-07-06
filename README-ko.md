@@ -13,19 +13,19 @@ OpenWhisk 에서 _액션_ 으로 불리는 이 JavaScript 함수는 `params`를 
 먼저, 터미널 윈도를 열어 OpenWhisk 활성화 로그에 대한 폴링을 시작합니다. 액션에서 `console.log` 구문은 여기에 로그를 남기고 다음 명령으로 스티리밍 할 수 있습니다:
 
 ```bash
-bx wsk activation poll
+ibmcloud fn activation poll
 ```
 
 또 다른 터미널 윈도에서, 다음 명령으로 OpenWhisk에 파일을 업로드 합니다:
 
 ```bash
-bx wsk action create handler handler.js
+ibmcloud fn action create handler handler.js
 ```
 
 이제 이를 수동으로 호출하십시오. 그러면 JSON 메시지를 현재 윈도에 나타내고 다른 윈도에 활성화 로그가 남게됩니다.
 
 ```bash
-bx wsk action invoke --blocking handler
+ibmcloud fn action invoke --blocking handler
 ```
 
 ## 트리거: `every-20-seconds`
@@ -35,7 +35,7 @@ bx wsk action invoke --blocking handler
 다음 명령으로 트리거를 생성합니다:
 
 ```bash
-bx wsk trigger create every-20-seconds \
+ibmcloud fn trigger create every-20-seconds \
   --feed  /whisk.system/alarms/alarm \
   --param cron '*/20 * * * * *' \
   --param maxTriggers 15
@@ -48,7 +48,7 @@ bx wsk trigger create every-20-seconds \
 다음 명령으로 룰을 생성합니다:
 
 ```bash
-bx wsk rule create \
+ibmcloud fn rule create \
   invoke-periodically \
   every-20-seconds \
   handler
@@ -71,11 +71,11 @@ OpenWhisk 개발자는 개발하는 애플리케이션에 대해 반복되는 �
 > **참고**: `deploy.sh`은 향후 [`wskdeploy`](https://github.com/openwhisk/openwhisk-wskdeploy)로 교체될 예정입니다. `wskdeploy`는 선언된 트리거, 액션 및 규칙을 OpenWhisk에 배포하기 위해 manifest를 사용합니다.
 
 ## 문제 해결
-가장 먼저 OpenWhisk 활성화 로그에서 오류를 확인 하십시오. 명령창에서 `bx wsk activation poll`을 이용하여 로그 메시지를 확인하거나 [Bluemix의 모니터링 콘솔](https://console.ng.bluemix.net/openwhisk/dashboard)에서 시각적으로 상세정보를 확인해 보십시오.
+가장 먼저 OpenWhisk 활성화 로그에서 오류를 확인 하십시오. 명령창에서 `ibmcloud fn activation poll`을 이용하여 로그 메시지를 확인하거나 [Bluemix의 모니터링 콘솔](https://console.ng.bluemix.net/openwhisk/dashboard)에서 시각적으로 상세정보를 확인해 보십시오.
 
 오류가 즉각적으로 분명하지 않다면, [최신 버젼의 `wsk` CLI](https://console.ng.bluemix.net/openwhisk/learn/cli)가 설치되어 있는지 확인하십시오. 만약 이전 것이라면 다운로드하고 업데이트 하십시오.
 ```bash
-bx wsk property get --cliversion
+ibmcloud fn property get --cliversion
 ```
 
 ## 라이센스

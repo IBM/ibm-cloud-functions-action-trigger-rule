@@ -13,19 +13,19 @@ This simple JavaScript function (called an _action_ in OpenWhisk) accepts a `par
 First, open a terminal window to start polling the activation log. The `console.log` statements in the action will be logged here, which you can stream with the following command:
 
 ```bash
-bx wsk activation poll
+ibmcloud fn activation poll
 ```
 
 In another terminal window, upload the action file as a Cloud Function using the following command:
 
 ```bash
-bx wsk action create handler handler.js
+ibmcloud fn action create handler handler.js
 ```
 
 Then invoke it manually. This will echo the resulting JSON message to the current window and log the activation in the other window.
 
 ```bash
-bx wsk action invoke --blocking handler
+ibmcloud fn action invoke --blocking handler
 ```
 
 ## Trigger: `every-20-seconds`
@@ -35,7 +35,7 @@ This trigger uses the built-in alarm package feed to fire events every 20 second
 Create it with the following command:
 
 ```bash
-bx wsk trigger create every-20-seconds \
+ibmcloud fn trigger create every-20-seconds \
   --feed  /whisk.system/alarms/alarm \
   --param cron '*/20 * * * * *' \
   --param maxTriggers 15
@@ -48,7 +48,7 @@ This rule shows how the `every-20-seconds` trigger can be declaratively mapped t
 Create the rule with the following command:
 
 ```bash
-bx wsk rule create \
+ibmcloud fn rule create \
   invoke-periodically \
   every-20-seconds \
   handler
@@ -71,11 +71,11 @@ The script can be used to set up, tear down, and see the current configuration:
 > **Note**: `deploy.sh` will be replaced with [`wskdeploy`](https://github.com/openwhisk/openwhisk-wskdeploy) in the future. `wskdeploy` uses a manifest to deploy declared triggers, actions, and rules to OpenWhisk.
 
 ## Troubleshooting
-Check for errors first in the activation log. Tail the log on the command line with `bx wsk activation poll` or drill into details visually with the [Cloud Functions monitoring console](https://console.ng.bluemix.net/openwhisk/dashboard).
+Check for errors first in the activation log. Tail the log on the command line with `ibmcloud fn activation poll` or drill into details visually with the [Cloud Functions monitoring console](https://console.ng.bluemix.net/openwhisk/dashboard).
 
 If the error is not immediately obvious, make sure you have the [latest version of the `wsk` CLI installed](https://console.ng.bluemix.net/openwhisk/learn/cli). If it's older than a few weeks, download an update.
 ```bash
-bx wsk property get --cliversion
+ibmcloud fn property get --cliversion
 ```
 
 ## License
